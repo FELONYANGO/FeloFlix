@@ -9,7 +9,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">TopIMDB</RouterLink>
+        <RouterLink to="/top-imdb">TopIMDB</RouterLink>
         <RouterLink to="/movies">Movies</RouterLink>
         <RouterLink to="/tv-shows">Tv Shows</RouterLink>
         <RouterLink to="/genre">Genre</RouterLink>

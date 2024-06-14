@@ -1,15 +1,19 @@
 <template>
-  <div class="about">
-    <h1>this is the to prated imdb page</h1>
+  <div class="about flex flex-wrap">
+    <rated-movies />
   </div>
 </template>
+<script>
+import RatedMovies from '../components/RatedMovies.vue';
+ export default {
 
+  components: {
+    RatedMovies,
+  },
+
+};
+</script>
 <style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
+
+
 </style>

@@ -1,8 +1,15 @@
 <script>
+import TvList from '../components/TvList.vue';
+ export default{
+    components: {
+   
+        TvList,
+    },
+ }
 </script>
 <template>
     <div class="about">
-        <h1>this is the tv shows page</h1>
+        <tv-list />
     </div>
 </template>
 <style scoped>

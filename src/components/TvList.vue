@@ -1,10 +1,12 @@
 <template>
     <div>
-      <h1 class="text-2xl text-[#E50914] py-1">Trending Movies</h1>
+      <h1 class="text-2xl text-[#E50914] py-1">TV List</h1>
     </div>
-  <div class=" flex flex-wrap items-center" v-if="fetchedData!=null && fetchedData.results.length">
+  <div class=" flex flex-wrap  items-center gap-4">
+   
   
-      <div v-for="item in fetchedData.results" :key="item.id">
+        <template v-if="fetchedData!=null  && fetchedData.results.length">
+            <div v-for="item in fetchedData.results" :key="item.id">
         <img
           :src="getFullBackdropPath(item.backdrop_path)"
           alt="Backdrop Image"
@@ -12,26 +14,20 @@
         />
         <p class="">{{ getTitle(item) }}</p>
         <p>{{ item.id }}</p>
+        <p>{{ fetchedData.results  }}</p>
       </div>
-      <hr>
-    <rated-movies />
-
-    <upcoming />
+        </template>
+    
   </div>
 
  
 </template>
 
 <script>
-import RatedMovies from '../components/RatedMovies.vue';
-import Upcoming from '../components/Upcoming.vue';
 
 
 export default {
-  components: {
-    RatedMovies,
-    Upcoming,
-  },
+
   
  
   data() {
@@ -45,7 +41,7 @@ export default {
     };
   },
   created() {
-    this.API_URL = `${this.API_BASE}trending/all/day?language=en-US&api_key=${this.API_KEY}`;
+    this.API_URL = `${this.API_BASE}tv/changes?page=1&api_key=${this.API_KEY}`;
     this.fetchData();
   },
   methods: {
@@ -63,6 +59,7 @@ export default {
         if (contentType && contentType.indexOf('application/json') !== -1) {
           const data = await response.json();
           this.fetchedData = data;
+          console.log(data);
         } else {
           // If not JSON, log the response text for debugging
           const text = await response.text();
